@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>dynamic-persistence-unit</title>
+</h:head>
+<h:body>
+  <h2>hibernate-tenancy-demo</h2>
+
+  Der folgende Wert wird per JPA für den unten ausgewählten Tenant gelesen bzw. gespeichert.
+  <h:form>
+    <h:outputLabel value="Text: " for="text" />
+    <h:inputText value="#{notePresenter.text}" id="text" />
+    <h:commandButton action="#{notePresenter.store()}" value="store" />
+  </h:form>
+
+  <hr />
+
+  Hier kann einer der verfügbaren Tenats ausgewählt werden. Das o.a. Textfeld wird nach der Auswahl refreshed. 
+  <h:form>
+    <h:outputLabel value="Tenant " for="tenant" />
+    <h:selectOneMenu value="#{notePresenter.currentTenant}" id="tenant">
+      <f:selectItems value="#{notePresenter.tenants}" />
+    </h:selectOneMenu>
+
+    <h:commandButton action="#{notePresenter.refresh()}" value="select" />
+  </h:form>
+</h:body>
+</html>

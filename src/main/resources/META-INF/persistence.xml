@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+  version="2.1">
+  <persistence-unit name="showcase" transaction-type="JTA">
+
+    <class>de.gedoplan.showcase.entity.Note</class>
+
+    <shared-cache-mode>NONE</shared-cache-mode>
+
+    <properties>
+      <property name="hibernate.multiTenancy" value="SCHEMA" />
+      <property name="hibernate.multi_tenant_connection_provider" value="de.gedoplan.showcase.multitenant.TenantConnectionProvider" />
+      <property name="hibernate.tenant_identifier_resolver" value="de.gedoplan.showcase.multitenant.TenantResolver" />
+    </properties>
+  </persistence-unit>
+</persistence>
